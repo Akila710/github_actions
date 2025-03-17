@@ -58,11 +58,10 @@ jobs:
         name: artifacts
     - name: Deploy to Sandbox
       env:
-        ANY_USERNAME: ${{ secrets.ANY_USERNAME }}
-        ANY_PASSWORD: ${{ secrets.ANY_PASSWORD }}
+        USERNAME: ${{ secrets.ANY_USERNAME }}
+        PASSWORD: ${{ secrets.ANY_PASSWORD }}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME_ANY" \
-         -Danypoint.password="$PASSWORD_ANY"
+         -Danypoint.username="$USERNAME" \
+         -Danypoint.password="$PASSWORD"
